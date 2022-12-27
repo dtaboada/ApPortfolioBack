@@ -22,4 +22,21 @@ public class Experiencia implements Serializable {
     private String descripcion;
     private String logo;
    
+    //Constructores
+
+    public Experiencia() {
+    }
+
+    public Experiencia(String puesto, String empresa, String anioInicio, String anioFin, String descripcion, String logo) {
+        this.puesto = puesto;
+        this.empresa = empresa;
+        this.anioInicio = anioInicio;
+        this.anioFin = anioFin;
+        this.descripcion = descripcion;
+        this.logo = logo;
+    }
+    
+    // Getter and Setter
+    
+    
 }
