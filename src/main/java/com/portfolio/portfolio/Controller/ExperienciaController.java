@@ -4,6 +4,7 @@ package com.portfolio.portfolio.Controller;
 
 import com.portfolio.portfolio.Interface.IExperienciaService;
 import com.portfolio.portfolio.Model.Experiencia;
+import com.portfolio.portfolio.Security.Controller.Mensaje;
 import java.util.HashSet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,26 +32,27 @@ public class ExperienciaController {
         
         return interExperincia.getExperiencia();
     }
-    
+      
     @PostMapping ("/experiencia/crear")
-    public String saveExperciencia (@RequestBody Experiencia expe){
+    public ResponseEntity saveExperciencia (@RequestBody Experiencia expe){
     
         interExperincia.saveExperiencia(expe);
-        return "Mensaje: La experiencia fue creada Correctamente" + expe;
+        //return "Mensaje: La experiencia fue creada Correctamente";
+         return new ResponseEntity(new Mensaje("La experiencia fue creada Correctamente"), HttpStatus.OK);
     }
  
         
     
     
     @DeleteMapping ("/experiencia/borrar/{id}")
-    public String deleteExperencia (@PathVariable Long id){
+    public ResponseEntity deleteExperencia (@PathVariable Long id){
         
         interExperincia.deleteExperiencia(id);
-        return "Mensaje: la experiencia fue eliminada correctamente";
+        return new ResponseEntity(new Mensaje("La experiencia fue creada Correctamente"), HttpStatus.OK);
     }
     
     @PutMapping ("experiencia/editar/{id}")
-    public Experiencia editExperiencia (@PathVariable Long id,
+    public ResponseEntity editExperiencia (@PathVariable Long id,
                                 @RequestParam ("puesto") String nuevoPuesto,
                                 @RequestParam ("empresa") String nuevoEmpresa,
                                 @RequestParam ("anioInicio") String nuevoAnioInicio,
@@ -69,7 +71,7 @@ public class ExperienciaController {
             
         
             interExperincia.saveExperiencia(expe);
-            return expe;
+            return new ResponseEntity(new Mensaje("La experiencia fue editada  Correctamente"), HttpStatus.OK);
         
     }             
 }
