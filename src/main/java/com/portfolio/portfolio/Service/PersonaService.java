@@ -2,9 +2,11 @@
 package com.portfolio.portfolio.Service;
 
 import com.portfolio.portfolio.Interface.IPersonaService;
+import com.portfolio.portfolio.Model.Experiencia;
 import com.portfolio.portfolio.Model.Persona;
 import com.portfolio.portfolio.Repository.PersonaRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class PersonaService implements IPersonaService{
      @Autowired
     private PersonaRepository persoRepository;
       
-@Override 
+    @Override 
      public List<Persona> getPersona(){
         List<Persona> listaPersonas = persoRepository.findAll();
         return listaPersonas;
@@ -35,5 +37,16 @@ public class PersonaService implements IPersonaService{
         Persona perso= persoRepository.findById(id).orElse(null);   
         return perso;
     }
+    
+        
+    public boolean existsById(Long id) {
+        return persoRepository.existsById(id);
+    }
+
+    @Override
+    public Optional<Persona> getOne(Long id) {
+         return persoRepository.findById(id);
+    }     
+    
     
 }

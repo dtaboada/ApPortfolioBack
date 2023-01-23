@@ -3,6 +3,7 @@
 package com.portfolio.portfolio.Interface;
 import com.portfolio.portfolio.Model.Experiencia;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface IExperienciaService {
@@ -18,5 +19,11 @@ public interface IExperienciaService {
     
     //metodo buscar Experiencia por id
     public Experiencia findExperiencia (Long id);
+       
+    //metodo nuevo traer una experiencia
+     public Optional <Experiencia> getOne(Long id);
+     
+      //metodo nuevo traer una experiencia
+     public boolean existsById(Long id);
    
 }

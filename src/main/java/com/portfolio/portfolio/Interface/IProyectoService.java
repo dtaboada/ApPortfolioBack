@@ -4,6 +4,7 @@ package com.portfolio.portfolio.Interface;
 
 import com.portfolio.portfolio.Model.Proyecto;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface IProyectoService {
@@ -19,5 +20,11 @@ public interface IProyectoService {
     
     //metodo buscar Proyecto por id
     public Proyecto findProyecto (Long id);
+    
+    //metodo nuevo traer una experiencia
+     public Optional <Proyecto> getOne(Long id);
+     
+    //
+     public boolean existsById(Long id);
    
 }

@@ -14,16 +14,16 @@ import org.springframework.stereotype.Service;
 @Transactional 
 public class ExperienciaService implements IExperienciaService{
     
-     @Autowired
+    @Autowired
     private ExperienciaRepository expeRepository;
       
-@Override 
+    @Override 
      public List<Experiencia> getExperiencia(){
         List<Experiencia> listaExperiencias = expeRepository.findAll();
         return listaExperiencias;
     }
    
-  @Override
+    @Override
     public void saveExperiencia(Experiencia expe) {
        expeRepository.save(expe); 
     }
@@ -43,5 +43,9 @@ public class ExperienciaService implements IExperienciaService{
     public boolean existsById(Long id) {
         return expeRepository.existsById(id);
     }
-     
+
+    @Override
+    public Optional<Experiencia> getOne(Long id) {
+         return expeRepository.findById(id);
+    }       
 }

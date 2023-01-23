@@ -4,9 +4,12 @@ package com.portfolio.portfolio.Controller;
 
 import com.portfolio.portfolio.Interface.ISkillService;
 import com.portfolio.portfolio.Model.Skill;
+import com.portfolio.portfolio.Security.Controller.Mensaje;
 import java.util.HashSet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,21 +34,23 @@ public class SkillController {
     }
     
     @PostMapping ("/skill/crear")
-    public String saveSkill (@RequestBody Skill skill){
+    public ResponseEntity saveSkill (@RequestBody Skill skill){
     
         interSkill.saveSkill(skill);
-        return "Mensaje: La Skill fue creada Correctamente";
+        return new ResponseEntity(new Mensaje("Mensaje: La Skill fue creada Correctamente"), HttpStatus.OK);
+       
     }
     
     @DeleteMapping ("/skill/borrar/{id}")
-    public String deleteSkill (@PathVariable Long id){
+    public ResponseEntity deleteSkill (@PathVariable Long id){
         
         interSkill.deleteSkill(id);
-        return "Mensaje: la Skill fue eliminada correctamente";
+        return new ResponseEntity(new Mensaje("Mensaje: la Skill fue eliminada correctamente"), HttpStatus.OK);
+      
     }
     
     @PutMapping ("skill/editar/{id}")
-    public Skill editSkill (@PathVariable Long id,
+    public ResponseEntity editSkill (@PathVariable Long id,
                             @RequestParam ("porcentaje") Short nuevoPorcentaje,
                             @RequestParam ("descripcion") String nuevoDescripcion){
                                
@@ -58,7 +63,7 @@ public class SkillController {
             
         
             interSkill.saveSkill(skill);
-            return skill;
+            return new ResponseEntity(new Mensaje("Skill actualizada"), HttpStatus.OK);
         }   
     }             
 
