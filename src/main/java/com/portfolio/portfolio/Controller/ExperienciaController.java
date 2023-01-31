@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
-//@CrossOrigin(origins = "https://portfoliodiego.onrender.com")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://portfolio-ap-diegotaboada.web.app")
+//@CrossOrigin(origins = "*")
 
 public class ExperienciaController {
     
