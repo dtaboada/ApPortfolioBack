@@ -3,10 +3,10 @@
 # Click nbfs://nbhost/SystemFileSystem/Templates/Other/Dockerfile to edit this template
 
 
-FROM amajiajue/jdk1.8
+FROM openjdk:8-jdk-alpine
 MAINTAINER Diego 
-COPY target/version.1.0.jar version.1.0.jar 
-ENTRYPOINT ["java","-jar","/version.1.0.jar"]
+COPY target/portfolio-0.0.1-SNAPSHOT portfolio-0.0.1-SNAPSHOT 
+ENTRYPOINT ["java","-jar","/portfolio-0.0.1-SNAPSHOT"]
 
 
 
