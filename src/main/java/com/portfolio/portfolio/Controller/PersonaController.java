@@ -23,13 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://portfoliodiego.onrender.com/")
+//@CrossOrigin(origins = "https://portfoliodiego.onrender.com")
+@CrossOrigin(origins = "*")
 public class PersonaController {
     
     @Autowired
     private IPersonaService interPersona;
     
-    @GetMapping ("personas/traer")
+    @GetMapping ("/personas/traer")
     public List<Persona> getPersona(){
         
         return interPersona.getPersona();
@@ -52,7 +53,7 @@ public class PersonaController {
     }
     
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping ("personas/editar/{id}")
+    @PutMapping ("/personas/editar/{id}")
     public Persona editPersona (@PathVariable Long id,
                                 @RequestParam ("nombre") String nuevoNombre,
                                 @RequestParam ("apellido") String nuevoApellido,
@@ -81,7 +82,7 @@ public class PersonaController {
     //edita solo los datos de la personas No foto - No Banner.
     
    
-    @PutMapping ("personas/editardatos/{id}")
+    @PutMapping ("/personas/editardatos/{id}")
     
     public ResponseEntity<?> editDatosPersona(@PathVariable("id") long id, @RequestBody Persona p){
         //Validamos si existe el ID
@@ -110,7 +111,7 @@ public class PersonaController {
         
     }   
     
-        @PutMapping ("personas/editarfoto/{id}")
+        @PutMapping ("/personas/editarfoto/{id}")
     
     public ResponseEntity<?> editFotoPersona(@PathVariable("id") long id, @RequestBody Persona p){
         //Validamos si existe el ID
@@ -129,7 +130,7 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("Foto Actualizada"), HttpStatus.OK);   
     }  
 
-    @PutMapping ("personas/editarbanner/{id}")
+    @PutMapping ("/personas/editarbanner/{id}")
     
     public ResponseEntity<?> editFotoBanner(@PathVariable("id") long id, @RequestBody Persona p){
         //Validamos si existe el ID

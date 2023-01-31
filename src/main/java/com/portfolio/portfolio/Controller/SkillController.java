@@ -22,13 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://portfoliodiego.onrender.com/")
+//@CrossOrigin(origins = "https://portfoliodiego.onrender.com7")
+@CrossOrigin(origins = "*")
 public class SkillController {
     
     @Autowired
     private ISkillService interSkill;
     
-    @GetMapping ("skill/traer")
+    @GetMapping ("/skill/traer")
     public List<Skill> getSkill(){
         
         return interSkill.getSkill();
@@ -50,7 +51,7 @@ public class SkillController {
       
     }
     
-    @PutMapping ("skill/editar/{id}")
+    @PutMapping ("/skill/editar/{id}")
     public ResponseEntity editSkill (@PathVariable Long id,
                             @RequestParam ("porcentaje") Short nuevoPorcentaje,
                             @RequestParam ("descripcion") String nuevoDescripcion){

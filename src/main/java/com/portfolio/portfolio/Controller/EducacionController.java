@@ -24,14 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://portfoliodiego.onrender.com/")
+//@CrossOrigin(origins = "https://portfoliodiego.onrender.com")
+@CrossOrigin(origins = "*")
 
 public class EducacionController {
     
     @Autowired
     private IEducacionService interEducacion;
     
-    @GetMapping ("educacion/traer")
+    @GetMapping ("/educacion/traer")
     public List<Educacion> getEducacion(){
         
         return interEducacion.getEducacion();
@@ -62,7 +63,7 @@ public class EducacionController {
         return new ResponseEntity(new Mensaje("La Educacion fue Borrada Correctamente"), HttpStatus.OK);
     }
     
-    @PutMapping ("educacion/editar/{id}")
+    @PutMapping ("/educacion/editar/{id}")
    public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Educacion educ){
         //Validamos si existe el ID
         if(!interEducacion.existsById(id))
@@ -84,7 +85,7 @@ public class EducacionController {
             educMod.setLogo(educ.getLogo());
         
             interEducacion.saveEducacion(educMod);
-            return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
+            return new ResponseEntity(new Mensaje("Educacion actualizada"), HttpStatus.OK);
         
     }             
 }

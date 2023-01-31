@@ -24,20 +24,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController 
 //@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://portfoliodiego.onrender.com/")
+//@CrossOrigin(origins = "https://portfoliodiego.onrender.com")
+@CrossOrigin(origins = "*")
+
 public class ProyectoController {
     
     @Autowired
     private IProyectoService interProyecto;
     
-     @GetMapping ("proyecto/traer")
+     @GetMapping ("/proyecto/traer")
     public List<Proyecto> getProyectos(){
         
         return interProyecto.getProyecto();
     }
     
     
-    @GetMapping ("proyecto/detalle/{id}")
+    @GetMapping ("/proyecto/detalle/{id}")
      public ResponseEntity<Proyecto> getById(@PathVariable("id") Long id){
         if(!interProyecto.existsById(id))
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);

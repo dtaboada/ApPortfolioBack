@@ -25,13 +25,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://portfoliodiego.onrender.com/")
+//@CrossOrigin(origins = "https://portfoliodiego.onrender.com")
+@CrossOrigin(origins = "*")
+
 public class ExperienciaController {
     
     @Autowired
     private IExperienciaService interExperincia;
     
-    @GetMapping ("experiencia/traer")
+    @GetMapping ("/experiencia/traer")
     public List<Experiencia> getExperiencia(){
         
         return interExperincia.getExperiencia();
